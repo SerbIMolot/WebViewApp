@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('E:\\teste\\kolobovaacademyApp\\kolobovaSign.jks')
+            storePassword 'kolobovasignedapp'
+            keyPassword 'kolobovasignedkeyapp'
+            keyAlias = 'kolobova'
+        }
+    }
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "com.kolobovaacademyapp"
+        minSdkVersion 15
+        targetSdkVersion 30
+        versionCode 3
+        versionName "3.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled   true
+            shrinkResources true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+            proguardFile 'proguard-project.txt'
+        }
+    }
+}
+
+
+
+repositories {
+    mavenCentral()
+    google()
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+
+}
